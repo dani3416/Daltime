@@ -16,10 +16,11 @@
             <button id="nav-toggle">☰</button>
 
             <ul class="nav-links">
-                <li class="has-submenu"><a href="inicio.html">Inicio ▾</a>
+                <li class="has-submenu"><a href="inicio.html#inicio">Inicio ▾</a>
                     <ul class="submenu">
                         <li><a href="inicio.html#quienes">Quiénes somos</a></li>
-                        <li><a href="inicio.html#servicios">Nuestros servicios</a></li>
+                        <li><a href="inicio.html#nueservicios">Nuestros servicios</a></li>
+                        <li><a href="inicio.html#contacto">Correo</a></li>
                     </ul>
                 </li>
 
@@ -56,19 +57,19 @@
 
     <section class="productos-servicios">
         <div class="cards-servicios">
-            <div class="card" data-categoria="ilustracion">
+            <div class="card" data-categoria="ilustracion" id="ilus">
                 <img src="img/digital.jpg" alt="Ilustración Digital">
                 <h3>Ilustración Digital</h3>
                 <button class="agregar-carrito" data-producto="Ilustración Digital">Agregar al carrito</button>
             </div>
 
-            <div class="card" data-categoria="editorial">
+            <div class="card" data-categoria="editorial" id="dedi">
                 <img src="img/servicio.jpg" alt="Diseño Editorial">
                 <h3>Diseño Editorial</h3>
                 <button class="agregar-carrito" data-producto="Diseño Editorial">Agregar al carrito</button>
             </div>
 
-            <div class="card" data-categoria="branding">
+            <div class="card" data-categoria="branding" id="myb">
                 <img src="img/mark.jpg" alt="Marketing y Branding">
                 <h3>Marketing y Branding</h3>
                 <button class="agregar-carrito" data-producto="Marketing y Branding">Agregar al carrito</button>
@@ -137,13 +138,34 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 function mostrarMensaje(texto) {
     const mensaje = document.createElement("div");
     mensaje.textContent = texto;
+
     Object.assign(mensaje.style, {
-        position: 'fixed', top:'20px', right:'20px', background:'#d1469e',
-        color:'white', padding:'10px 20px', borderRadius:'6px', zIndex:10000
+        position: "fixed",
+        top: "20px",
+        right: "20px",
+        background: "#ffe6f3",       // rosadito clarito
+        color: "#4b2242",            // morado oscuro suave
+        padding: "12px 18px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+        fontWeight: "500",
+        zIndex: "99999",
+        opacity: "0",
+        transition: "opacity .3s ease"
     });
+
     document.body.appendChild(mensaje);
-    setTimeout(()=>mensaje.remove(),2000);
+
+    // animación de fade-in
+    setTimeout(() => { mensaje.style.opacity = "1"; }, 50);
+
+    // fade-out + remover
+    setTimeout(() => {
+        mensaje.style.opacity = "0";
+        setTimeout(() => mensaje.remove(), 300);
+    }, 2000);
 }
+
 
 // Actualizar carrito en HTML y localStorage
 function actualizarCarrito() {
@@ -218,4 +240,3 @@ botonesFiltro.forEach(btn=>{
 
 </body>
 </html>
-
