@@ -110,7 +110,7 @@ nav a {
 
 nav a:hover {
     transform: translateY(-3px);
-    color: #fff3f3;
+    color: #ffd1f0;
 }
 
 /* SUBMENÚ (cerrado por defecto) */
@@ -274,10 +274,8 @@ header p {
     100% { transform: translateX(0); }
 }
 
-/* ------------------------- */
-/* INFO SOBRE DALTIME */
-/* ------------------------- */
 
+/* INFO SOBRE DALTIME */
 #quienes {
     scroll-margin-top: 110px;
 }
@@ -288,7 +286,7 @@ header p {
     padding: 25px 20px;
     background: white;
     border-radius: 15px;
-    box-shadow: 0 4px 12px #00000010;
+    box-shadow: 0 4px 15px #0000003f;
     text-align: center;
     max-width: 800px;
 }
@@ -309,9 +307,12 @@ header p {
     color: #3d2a41;
 }
 
-/* ------------------------- */
+#quienes {
+    margin-top: 90px;
+    margin-bottom: 80px;
+}
+
 /* SERVICIOS - CARDS */
-/* ------------------------- */
 .inicio-servicios {
     margin-top: 60px;
     margin: 50px 0;
@@ -370,12 +371,38 @@ header p {
     color: #963886;
 }
 
-/* ------------------------- */
+
 /* SERVICIOS DETALLADOS Y CONTACTO */
-/* ------------------------- */
+
+#servicios {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.servicios {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.contacto {
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.contacto p {
+    line-height: 1.4;
+}
+
+.contacto a{
+    color: #771854;
+}
+
+.contacto a:hover {
+    color: #9b3274;
+}
+
 .servicios, .contacto {
     text-align: center;
-    margin: 30px 0;
 }
 
 .servicios h3, .contacto h3 {
@@ -389,9 +416,6 @@ header p {
 
 }
 
-.contacto {
-    margin-top: 50px;
-}
 
 #contacto p, a {
     font-size: 16px;
@@ -527,6 +551,14 @@ header p {
   scroll-margin-top: 120px; 
 }
 
+#quienes {
+  scroll-margin-top: 130px; 
+}
+
+#nueservicios {
+  scroll-margin-top: 140px; 
+
+}
 
 
 
