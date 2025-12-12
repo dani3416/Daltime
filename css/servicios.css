@@ -109,7 +109,7 @@ nav a {
 
 nav a:hover {
     transform: translateY(-3px);
-    color: #fff3f3;
+    color: #ffd1f0;
 }
 
 /* SUBMENÚ (cerrado por defecto) */
@@ -248,17 +248,21 @@ h1 {
 }
 
 .filtro-btn {
+    font-family: 'Madani';
+    font-size: 13px;
     margin:5px; 
     padding:8px 15px; 
     border:none; 
-    border-radius:6px; 
+    border-radius:8px; 
     cursor:pointer; 
-    background:#d1469e; 
-    color:white;
+    border: 2px solid #8f2869;
+    background:#e9cadd; 
+    color:rgb(44, 19, 35);
 }
 
 .filtro-btn:hover {
-    background:#a1277b;
+    background:#7c224cb7;
+    color: #f5d4f5;
 }
 
 .cards-servicios {
@@ -296,6 +300,7 @@ h1 {
 }
 
 .card button {
+    font-family: 'Madani';
     margin-bottom:15px; 
     padding:8px 12px; 
     border:none; 
@@ -303,11 +308,21 @@ h1 {
     color:white; 
     border-radius:6px; 
     cursor:pointer; 
-    transition:background .2s ease;
+    transition: transform .12s ease, background .3s ease;
 }
 
 .card button:hover {
+    transform: translateY(-1px);
     background:#a1277b;
+}
+
+.carrito-section button {
+    font-family: 'Madani';
+    transition: transform .12s ease, background .12s ease;
+}
+
+.carrito-section button:hover {
+    transform: translateY(-1.5px);
 }
 
 .carrito-section {
@@ -342,7 +357,8 @@ h1 {
 }
 
 #lista-carrito li button {
-    background:#d1469e; 
+    font-family: 'Madani';
+    background:#b33886; 
     border:none; 
     color:white; 
     padding:5px 10px; 
@@ -352,21 +368,23 @@ h1 {
 }
 
 #lista-carrito li button:hover {
-    background:#a1277b;
+    background:#882167;
 }
 
 #vaciar-carrito {
     margin-top:10px; 
     padding:8px 15px; 
     border:none; 
-    background:#d1469e; 
-    color:white; 
-    border-radius:6px; 
+    border-radius: 8px;
+    border: 2px solid #8f2869;
+    background:#e9cadd; 
+    color:rgb(44, 19, 35);
     cursor:pointer;
 }
 
 #vaciar-carrito:hover {
-    background:#a1277b;
+    background:#7c224cb7;
+    color: #f5d4f5;
 }
 
 
