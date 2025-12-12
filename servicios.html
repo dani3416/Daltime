@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daltime Studio</title>
+    <link rel="icon" type="image/icono" href="img/D.png">
+    <link rel="stylesheet" href="css/servicios.css">
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container container-limit">
+            <h2 class="logo">Daltime Studio</h2>
+
+            <button id="nav-toggle">☰</button>
+
+            <ul class="nav-links">
+                <li class="has-submenu"><a href="inicio.html">Inicio ▾</a>
+                    <ul class="submenu">
+                        <li><a href="inicio.html#quienes">Quiénes somos</a></li>
+                        <li><a href="inicio.html#servicios">Nuestros servicios</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu"><a href="servicios.html">Servicios ▾</a>
+                    <ul class="submenu">
+                        <li><a href="#ilus">Ilustración digital</a></li>
+                        <li><a href="#dedi">Diseño editorial</a></li>
+                        <li><a href="#myb">Marketing y Branding</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">Compra (<span id="contador-carrito">0</span>)</a></li>
+
+
+
+                <li><a href="contacto.html">Contacto</a></li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+<!-- SECCIÓN DE SERVICIOS -->
+<main class="container-limit">
+    <h1>Servicios de <span>Daltime Studio</span></h1>
+
+    <!-- FILTRO DE CATEGORÍAS -->
+    <div class="filtro-categorias">
+        <button class="filtro-btn" data-categoria="todos">Todos</button>
+        <button class="filtro-btn" data-categoria="ilustracion">Ilustración</button>
+        <button class="filtro-btn" data-categoria="editorial">Editorial</button>
+        <button class="filtro-btn" data-categoria="branding">Branding</button>
+    </div>
+
+    <section class="productos-servicios">
+        <div class="cards-servicios">
+            <div class="card" data-categoria="ilustracion">
+                <img src="img/digital.jpg" alt="Ilustración Digital">
+                <h3>Ilustración Digital</h3>
+                <button class="agregar-carrito" data-producto="Ilustración Digital">Agregar al carrito</button>
+            </div>
+
+            <div class="card" data-categoria="editorial">
+                <img src="img/servicio.jpg" alt="Diseño Editorial">
+                <h3>Diseño Editorial</h3>
+                <button class="agregar-carrito" data-producto="Diseño Editorial">Agregar al carrito</button>
+            </div>
+
+            <div class="card" data-categoria="branding">
+                <img src="img/mark.jpg" alt="Marketing y Branding">
+                <h3>Marketing y Branding</h3>
+                <button class="agregar-carrito" data-producto="Marketing y Branding">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DEL CARRITO -->
+    <section class="carrito-section">
+        <h2>Tu carrito de compras</h2>
+        <button id="vaciar-carrito">Vaciar carrito</button>
+        <ul id="lista-carrito"></ul>
+    </section>
+
+    <!-- CONTADOR DE VISITAS -->
+    <p id="contador-visitas"></p>
+</main>
+
+
+
+     <!-- FOOTER -->
+    <footer class="footer-grid container-limit">
+        <div>
+            <h3>Daltime Studio</h3>
+            <p>Creatividad, diseño y soluciones digitales.</p>
+        </div>
+
+        <div>
+            <h5>Navegación</h5>
+            <ul>
+                <li><a href="inicio.html#inicio">Inicio</a></li>
+                <li><a href="inicio.html#quienes">Quienes somos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="compra.html">Compra</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5>Contacto</h5>
+            <p><a href="mailto:daltime_studio@gmail.com">daltime_studio@gmail.com</a></p>
+            <p>Barranquilla, Colombia</p>
+        </div>
+
+        <div>
+            <h5>Redes</h5>
+            <a href="#">Instagram</a><br>
+            <a href="#">TikTok</a><br>
+            <a href="#">Facebook</a>
+        </div>
+
+        <div class="footer-legal">
+            <p>© <span>2025</span> Daltime Studio — Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+<!-- JS -->
+<script>
+const botonesAgregar = document.querySelectorAll(".agregar-carrito");
+const listaCarrito = document.getElementById("lista-carrito");
+const contadorCarritoElem = document.getElementById("contador-carrito");
+const botonVaciar = document.getElementById("vaciar-carrito");
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// Mostrar mensaje flotante
+function mostrarMensaje(texto) {
+    const mensaje = document.createElement("div");
+    mensaje.textContent = texto;
+    Object.assign(mensaje.style, {
+        position: 'fixed', top:'20px', right:'20px', background:'#d1469e',
+        color:'white', padding:'10px 20px', borderRadius:'6px', zIndex:10000
+    });
+    document.body.appendChild(mensaje);
+    setTimeout(()=>mensaje.remove(),2000);
+}
+
+// Actualizar carrito en HTML y localStorage
+function actualizarCarrito() {
+    listaCarrito.innerHTML = "";
+    carrito.forEach((producto,index)=>{
+        const li=document.createElement("li");
+        li.textContent=producto;
+
+        const btnEliminar=document.createElement("button");
+        btnEliminar.textContent="Eliminar";
+        btnEliminar.addEventListener("click",()=>{
+            carrito.splice(index,1);
+            actualizarCarrito();
+            mostrarMensaje("Producto eliminado con éxito");
+        });
+
+        li.appendChild(btnEliminar);
+        listaCarrito.appendChild(li);
+    });
+    contadorCarritoElem.textContent = carrito.length;
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// Agregar producto
+botonesAgregar.forEach(boton=>{
+    boton.addEventListener("click",()=>{
+        const producto = boton.getAttribute("data-producto");
+        carrito.push(producto);
+        actualizarCarrito();
+        mostrarMensaje("Producto agregado con éxito");
+    });
+});
+
+// Vaciar carrito
+botonVaciar.addEventListener("click", ()=>{
+    carrito = [];
+    actualizarCarrito();
+    mostrarMensaje("Carrito vaciado con éxito");
+});
+
+// Cargar carrito inicial
+actualizarCarrito();
+
+// Toggle navbar móvil
+const nav = document.querySelector('.main-nav');
+const toggle = document.getElementById('nav-toggle');
+toggle.addEventListener('click',()=>{nav.classList.toggle('nav-open');});
+
+// CONTADOR DE VISITAS
+let visitas = localStorage.getItem("visitas") || 0;
+visitas++;
+localStorage.setItem("visitas", visitas);
+document.getElementById("contador-visitas").textContent = `Has visitado esta página ${visitas} veces.`;
+
+// FILTRO POR CATEGORÍAS
+const botonesFiltro = document.querySelectorAll(".filtro-btn");
+const cards = document.querySelectorAll(".card");
+botonesFiltro.forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+        const categoria = btn.getAttribute("data-categoria");
+        cards.forEach(card=>{
+            if(categoria === "todos" || card.getAttribute("data-categoria") === categoria){
+                card.style.display="block";
+            }else{
+                card.style.display="none";
+            }
+        });
+    });
+});
+</script>
+
+
+</body>
+</html>

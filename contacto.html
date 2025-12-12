@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/icono" href="img/D.png">
+    <title>Daltime Studio</title>
+    <link rel="stylesheet" href="css/contacto.css">
+
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container container-limit">
+            <h2 class="logo">Daltime Studio</h2>
+
+            <button id="nav-toggle">☰</button>
+
+            <ul class="nav-links">
+                <li class="has-submenu"><a href="#inicio">Inicio ▾</a>
+                    <ul class="submenu">
+                        <li><a href="#quienes">Quiénes somos</a></li>
+                        <li><a href="#nueservicios">Nuestros servicios</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu"><a href="servicios.html">Servicios ▾</a>
+                    <ul class="submenu">
+                        <li><a href="servicios.html#ilus">Ilustración digital</a></li>
+                        <li><a href="servicios.html#dedi">Diseño editorial</a></li>
+                        <li><a href="servicios.html#myb">Marketing y Branding</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="servicios.html">Compra</a></li>
+
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+
+
+  <main class="container contact-layout">
+    <!-- Izquierda: texto principal + Google Maps -->
+    <section class="contact-map">
+      <h1 class="hero-title">Queremos trabajar contigo...</h1>
+      <h3>Contáctanos para trabajar juntos, crear diseños únicos.</h3>
+      <p>Estamos en Barranquilla, Atlántico, Colombia.</p>
+
+      <div class="map-wrapper">
+        <!-- Mapa centrado en Barranquilla; puedes reemplazar el iframe por el tuyo propio desde Google Maps -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.9350242131784!2d-74.806981!3d11.004107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef42d0b8d9b4f7d%3A0x4f2b8b1a9d3e5e8!2sBarranquilla%2C%20Atl%C3%A1ntico%2C%20Colombia!5e0!3m2!1ses!2sco!4v1700000000001"
+          width="100%" height="350" style="border:0;" allowfullscreen=""
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <p class="contact-info">
+        Para cualquier otra consulta puedes contactarnos directamente a nuestro email 
+        <a href="mailto:daltime_studio@gmail.com">daltime_studio@gmail.com</a>
+      </p>
+    </section>
+
+    <!-- FORM -->
+    <!-- Derecha: formulario de contacto -->
+    <section class="contact-form-section">
+      <h2 class="hero-title">Formulario de contacto</h2>
+      <p>Completa el formulario y te responderemos lo antes posible.</p>
+
+      <form id="contactForm">
+        <label>
+          Nombre y apellido *
+          <input type="text" name="nombre" required>
+        </label>
+
+        <label>
+          Teléfono *
+          <input type="tel" name="telefono" required>
+        </label>
+
+        <label>
+          Email *
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          ¿Qué servicio te interesa? *
+          <input type="text" name="servicio" required>
+        </label>
+
+        <label>
+          Cuéntanos sobre tu proyecto o marca *
+          <textarea name="mensaje" rows="4" required></textarea>
+        </label>
+
+        <button type="submit" class="btn">ENVIAR</button>
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+
+     <!-- FOOTER -->
+    <footer class="footer-grid container-limit">
+        <div>
+            <h3>Daltime Studio</h3>
+            <p>Creatividad, diseño y soluciones digitales.</p>
+        </div>
+
+        <div>
+            <h5>Navegación</h5>
+            <ul>
+                <li><a href="inicio.html#inicio">Inicio</a></li>
+                <li><a href="inicio.html#quienes">Quienes somos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="compra.html">Compra</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5>Contacto</h5>
+            <p><a href="mailto:daltime_studio@gmail.com">daltime_studio@gmail.com</a></p>
+            <p>Barranquilla, Colombia</p>
+        </div>
+
+        <div>
+            <h5>Redes</h5>
+            <a href="#">Instagram</a><br>
+            <a href="#">TikTok</a><br>
+            <a href="#">Facebook</a>
+        </div>
+
+        <div class="footer-legal">
+            <p>© <span>2025</span> Daltime Studio — Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JS DEL MENÚ -->
+    <script>
+        const nav = document.querySelector(".main-nav");
+        const toggle = document.getElementById("nav-toggle");
+
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("nav-open");
+        });
+
+        const submenuLinks = document.querySelectorAll(".has-submenu > a");
+
+        submenuLinks.forEach(link => {
+            link.addEventListener("click", e => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle("open");
+                }
+            });
+        });
+    </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+  const messageEl = document.getElementById("formMessage");
+
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // evita envío real
+
+    const data = new FormData(form);
+    for (const [, value] of data.entries()) {
+      if (!value.trim()) {
+        messageEl.textContent = "Por favor completa todos los campos obligatorios.";
+        messageEl.style.color = "red";
+        return;
+      }
+    }
+
+    messageEl.textContent = "Mensaje enviado con éxito.";
+    messageEl.style.color = "green";
+    form.reset();
+  });
+});
+</script>
+
+
+</body>
+</html>
