@@ -1,0 +1,532 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #faedf5;
+    color: #13080e;
+    font-family: 'Madani', sans-serif;
+}
+
+
+/* FUENTES */
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Bold.otf') format('opentype');
+    font-weight: 700; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Black.otf') format('opentype');
+    font-weight: 900; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Thin.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hallo Almond';
+    src: url("../webfonts/Hallo\ Almond.ttf") format('truetype');
+}
+
+
+/* NAV STICKY */
+.main-nav {
+    position: sticky;
+    top: 0;
+    background: #d1469e;
+    padding: 15px 40px;
+    z-index: 1000;
+}
+
+.main-nav ul {
+    list-style: none;
+    gap: 30px;
+}
+
+.main-nav > ul {
+    display: flex;
+}
+
+.main-nav li {
+    position: relative;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    font-family: 'Hallo Almond';
+    color: rgb(255, 247, 247);
+    font-size: 35px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+
+/* MENÚ PRINCIPAL – DESKTOP */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;      
+    gap: 30px;
+}
+
+.main-nav li {
+    position: relative;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform .12s ease, background .12s ease;
+}
+
+nav a:hover {
+    transform: translateY(-3px);
+    color: #fff3f3;
+}
+
+/* SUBMENÚ (cerrado por defecto) */
+.submenu {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #4b2242e1;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 200px;
+    list-style: none;
+    flex-direction: column;
+    z-index: 999;
+}
+
+/* SOLO visible al hacer hover en desktop */
+.has-submenu:hover > .submenu {
+    display: block !important;
+}
+
+/* Hover en ESCRITORIO */
+@media (min-width: 769px) {
+    .has-submenu:hover > .submenu {
+        display: flex;
+    }
+}
+
+/* Estilos internos del submenú */
+.submenu li {
+    width: 100%;
+}
+
+.submenu a {
+    padding: 8px 12px;
+    display: block;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.submenu a:hover {
+    background: #664066;
+}
+
+
+/* MOBILE */
+#nav-toggle {
+    display: none;
+    font-size: 28px;
+    color: #eee0ff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    /* Mostrar botón hamburguesa */
+    #nav-toggle {
+        display: block;
+    }
+
+    /* Menú oculto inicialmente */
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #4b2242e1;
+        border-radius: 8px;
+        padding: 10px;
+        gap: 10px;
+        align-items: flex-start;     /* ← evita centrado */
+    }
+
+    /* Cuando el nav se abre */
+    .main-nav.nav-open ul {
+        display: flex;
+    }
+
+    /* Submenú MOBILE */
+    .submenu {
+        position: relative;
+        width: 100%;
+        background: #3a1e32;
+        padding-left: 15px;
+        border-radius: 6px;
+    }
+
+    /* Solo se abre con click */
+    .has-submenu.open > .submenu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;      /* ← evita centrado */
+    }
+}
+
+
+
+/* HEADER / PORTADA */
+header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+header h1 {
+    font-family: 'Hallo Almond';
+    letter-spacing: 2.5px;
+    font-size: 48px;
+    color: #d1469e;
+}
+
+header p {
+    font-size: 20px;
+    color: #3d2a41;
+    margin-top: 8px;
+}
+
+
+/* CARRUSEL */
+.carousel {
+    width: 100%;
+    max-width: 1500px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 30px 0;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .carousel {
+        height: 410px;
+    }
+}
+
+.carousel-track {
+    display: flex;
+    width: 300%;
+    animation: slide 12s infinite ease-in-out;
+}
+
+.carousel-track img {
+    width: 100vw;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* Animación del carrusel */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(0); }
+
+    36% { transform: translateX(-100vw); }
+    66% { transform: translateX(-100vw); }
+
+    69% { transform: translateX(-200vw); }
+    99% { transform: translateX(-200vw); }
+
+    100% { transform: translateX(0); }
+}
+
+/* ------------------------- */
+/* INFO SOBRE DALTIME */
+/* ------------------------- */
+
+#quienes {
+    scroll-margin-top: 110px;
+}
+
+.info-daltime {
+    margin-top: 60px;
+    margin: 40px auto;
+    padding: 25px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px #00000010;
+    text-align: center;
+    max-width: 800px;
+}
+
+.info-daltime h2 {
+    font-weight: 500;
+    color: #380f29;
+    font-size: 35px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+
+.info-daltime p {
+    line-height: 1.2;
+    padding: 0px 40px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #3d2a41;
+}
+
+/* ------------------------- */
+/* SERVICIOS - CARDS */
+/* ------------------------- */
+.inicio-servicios {
+    margin-top: 60px;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.inicio-servicios h2 {
+    color: #380f29;
+    font-size: 34px;
+    margin-bottom: 25px;
+}
+
+.cards-servicios {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 280px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px #00000020;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px #00000030;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3 {
+    font-weight: 400;
+    padding: 15px;
+    color: #380f29;
+    font-size: 20px;
+    text-align: center;
+}
+
+.contacto a, footer a{
+    text-decoration: none;
+    color: #501e50;
+}
+
+.contacto a:hover, footer a:hover{
+    text-decoration: underline;
+    color: #963886;
+}
+
+/* ------------------------- */
+/* SERVICIOS DETALLADOS Y CONTACTO */
+/* ------------------------- */
+.servicios, .contacto {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.servicios h3, .contacto h3 {
+    font-size: 28px;
+    color: #380f29;
+}
+
+.servicios h3 {
+    font-weight: 500;
+    margin-bottom: 15px;
+
+}
+
+.contacto {
+    margin-top: 50px;
+}
+
+#contacto p, a {
+    font-size: 16px;
+}
+
+.contacto h3 {
+    margin-top: 30px;
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 7px;
+}
+
+.servicios p, .contacto p {
+    padding: 0px 300px;
+    font-size: 18px;
+    color: #3d2a41;
+}
+
+
+
+/* FOOTER EN COLUMNAS */
+.footer-grid {
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 40px 40px;
+    justify-content: space-between;
+}
+
+.footer-grid div {
+    flex: 1 1 200px;
+}
+
+.footer-grid h3, .footer-grid h5 {
+    margin-bottom: 10px;
+}
+
+.footer-grid h3 {
+    font-family: 'Hallo Almond';
+    letter-spacing: 1px;
+    font-weight: lighter;
+}
+
+.footer-grid ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-grid ul li {
+    margin-bottom: 5px;
+}
+
+.footer-grid a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-grid a:hover {
+    text-decoration: underline;
+}
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-legal span{
+    font-family: sans-serif;
+    font-weight: 520;
+}
+
+/* ------------------------- */
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .main-nav ul {
+        margin-right: 10px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #4b2242e1;
+        border-radius: 8px;
+        padding: 10px 0;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .main-nav.nav-open ul {
+        display: flex;
+    }
+
+    #nav-toggle {
+        display: block;
+    }
+
+    .submenu {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .has-submenu.open > .submenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .has-submenu.open > .submenu {
+    display: flex;
+}
+
+    .cards-servicios {
+        gap: 15px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+
+    .servicios p, .contacto p {
+    padding: 0px 20px;
+    font-size: 18px;
+    color: #3d2a41;
+}
+
+}
+
+[id] {
+  scroll-margin-top: 120px; 
+}
+
+
+
+

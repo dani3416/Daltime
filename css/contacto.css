@@ -1,0 +1,521 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #faedf5;
+    color: #13080e;
+    font-family: 'Madani', sans-serif;
+}
+
+
+/* FUENTES */
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Bold.otf') format('opentype');
+    font-weight: 700; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Black.otf') format('opentype');
+    font-weight: 900; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Madani';
+    src: url('../webfonts/madani_2/MadaniArabicDEMO-Thin.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hallo Almond';
+    src: url("../webfonts/Hallo\ Almond.ttf") format('truetype');
+}
+
+
+/* NAV STICKY */
+.main-nav {
+    position: sticky;
+    top: 0;
+    background: #d1469e;
+    padding: 15px 40px;
+    z-index: 1000;
+}
+
+.main-nav ul {
+    list-style: none;
+    gap: 30px;
+}
+
+.main-nav > ul {
+    display: flex;
+}
+
+.main-nav li {
+    position: relative;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    font-family: 'Hallo Almond';
+    color: rgb(255, 247, 247);
+    font-size: 35px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+
+/* MENÚ PRINCIPAL – DESKTOP */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;      
+    gap: 30px;
+}
+
+.main-nav li {
+    position: relative;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform .12s ease, background .12s ease;
+}
+
+nav a:hover {
+    transform: translateY(-3px);
+    color: #fff3f3;
+}
+
+/* SUBMENÚ (cerrado por defecto) */
+.submenu {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #4b2242e1;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 200px;
+    list-style: none;
+    flex-direction: column;
+    z-index: 999;
+}
+
+/* SOLO visible al hacer hover en desktop */
+.has-submenu:hover > .submenu {
+    display: block !important;
+}
+
+/* Hover en ESCRITORIO */
+@media (min-width: 769px) {
+    .has-submenu:hover > .submenu {
+        display: flex;
+    }
+}
+
+/* Estilos internos del submenú */
+.submenu li {
+    width: 100%;
+}
+
+.submenu a {
+    padding: 8px 12px;
+    display: block;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.submenu a:hover {
+    background: #664066;
+}
+
+
+/* MOBILE */
+#nav-toggle {
+    display: none;
+    font-size: 28px;
+    color: #eee0ff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    /* Mostrar botón hamburguesa */
+    #nav-toggle {
+        display: block;
+    }
+
+    /* Menú oculto inicialmente */
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #4b2242e1;
+        border-radius: 8px;
+        padding: 10px;
+        gap: 10px;
+        align-items: flex-start;   
+    }
+
+    /* Cuando el nav se abre */
+    .main-nav.nav-open ul {
+        display: flex;
+    }
+
+    /* Submenú MOBILE */
+    .submenu {
+        position: relative;
+        width: 100%;
+        background: #3a1e32;
+        padding-left: 15px;
+        border-radius: 6px;
+    }
+
+    /* Solo se abre con click */
+    .has-submenu.open > .submenu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;      
+    }
+}
+
+
+nav {
+    margin-bottom: 80px;
+}
+
+footer {
+    margin-top: 100px;
+}
+
+/*CONTENIDO*/
+
+.container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* Banner superior */
+.banner-top img {
+  width: 100%;
+  display: block;
+}
+
+/* Títulos principales */
+.hero-title {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+/* Página de servicios */
+.hero {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.service-card h2 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.cta {
+  margin-top: 32px;
+  text-align: center;
+  background: #ffe1f0;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+/* Botón genérico */
+form .btn {
+    margin-top: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn {
+    font-family: 'Madani';
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #d1469e;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #a1277b;
+}
+
+/* Contacto: dos columnas */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.contact-map p {
+  margin-top: 4px;
+}
+
+.map-wrapper {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.contact-info {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* Formulario */
+.contact-form-section h2 {
+  margin-bottom: 8px;
+}
+
+.contact-form-section p {
+    margin-bottom: 20px;
+}
+
+.contact-map h1 {
+    color: #4e2041;
+    font-weight: 500;
+}
+
+.contact-map {
+    margin-bottom: 8px;
+}
+
+.contact-info a, footer a{
+    text-decoration: none;
+    color: #501e50;
+}
+
+.contact-info a:hover, footer a:hover{
+    text-decoration: underline;
+    color: #963886;
+}
+
+#contactForm {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+#contactForm label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+#contactForm input,
+#contactForm textarea {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+#contactForm button {
+  margin-top: 12px;
+}
+
+.form-message {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: green;
+}
+
+/* Footer */
+
+@media (max-width: 768px) {
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #4c3b6b;
+        padding: 15px 0;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .main-nav.nav-open ul {
+        display: flex;
+    }
+
+    #nav-toggle {
+        display: block;
+    }
+
+    .cards-servicios {
+        gap: 15px;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
+
+
+/* FOOTER EN COLUMNAS */
+.footer-grid {
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 40px 40px;
+    justify-content: space-between;
+}
+
+.footer-grid div {
+    flex: 1 1 200px;
+}
+
+.footer-grid h3, .footer-grid h5 {
+    margin-bottom: 10px;
+}
+
+.footer-grid h3 {
+    font-family: 'Hallo Almond';
+    letter-spacing: 1px;
+    font-weight: lighter;
+}
+
+.footer-grid ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-grid ul li {
+    margin-bottom: 5px;
+}
+
+.footer-grid a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-grid a:hover {
+    text-decoration: underline;
+}
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-legal span{
+    font-family: sans-serif;
+    font-weight: 520;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .main-nav ul {
+        margin-right: 10px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #4b2242e1;
+        border-radius: 8px;
+        padding: 10px 0;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .main-nav.nav-open ul {
+        display: flex;
+    }
+
+    #nav-toggle {
+        display: block;
+    }
+
+    .submenu {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .has-submenu.open > .submenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .has-submenu.open > .submenu {
+    display: flex;
+}
+
+
+}
+
+[id] {
+  scroll-margin-top: 120px; 
+}
+
+
+/* Responsive */
+@media (max-width: 800px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
